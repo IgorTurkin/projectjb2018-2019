@@ -7,11 +7,11 @@ import kotlinx.android.synthetic.main.activity_subject.*
 
 class Subject : AppCompatActivity() {
 
+    val key = "subject"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject)
-
-        val key = "subject"
 
         alg1.setOnClickListener {
             val intent = Intent(this, InSubject::class.java)
@@ -22,6 +22,18 @@ class Subject : AppCompatActivity() {
         alg2.setOnClickListener {
             val intent = Intent(this,InSubject::class.java)
             intent.putExtra(key,"alg2")
+            startActivity(intent)
+        }
+
+        geom1.setOnClickListener {
+            val intent = Intent(this,InSubject::class.java)
+            intent.putExtra(key,"geom1")
+            startActivity(intent)
+        }
+
+        geom2.setOnClickListener {
+            val intent = Intent(this,InSubject::class.java)
+            intent.putExtra(key,"geom2")
             startActivity(intent)
         }
     }
