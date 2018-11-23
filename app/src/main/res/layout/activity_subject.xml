@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Subject"
+        android:orientation="horizontal"
+>
+
+    <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+    >
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="алгебра"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/alg"
+        />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/alg"
+                android:layout_centerHorizontal="true"
+                android:text="Тема 1"
+                android:id="@+id/alg1"
+        />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Тема 2"
+                android:layout_below="@id/alg1"
+                android:id="@+id/alg2"
+                android:layout_centerHorizontal="true"
+        />
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+    >
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="геометрия"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/geom"
+        />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/geom"
+                android:layout_centerHorizontal="true"
+                android:text="Тема 1"
+                android:id="@+id/geom1"
+        />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Тема 2"
+                android:layout_below="@id/geom1"
+                android:id="@+id/geom2"
+                android:layout_centerHorizontal="true"
+        />
+
+
+    </RelativeLayout>
+
+    <!--<LinearLayout android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--&gt;-->
+
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>
