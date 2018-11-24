@@ -12,25 +12,25 @@ class InSubject : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insubject)
 
-        Toast.makeText(this,this.intent.getStringExtra(Constants.keysubject),Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,this.intent.getStringExtra(Constants.keysubject),Toast.LENGTH_SHORT).show()
 
         tasks.setOnClickListener {
             val intent = Intent(this,Tasks::class.java)
             intent.putExtra(Constants.keysubject,this.intent.getStringExtra(Constants.keysubject))
+            intent.putExtra(Constants.keytopic,this.intent.getIntExtra(Constants.keytopic,0))
             startActivity(intent)
         }
 
         textbook.setOnClickListener {
             val intent = Intent(this,Textbook::class.java)
             intent.putExtra(Constants.keysubject,this.intent.getStringExtra(Constants.keysubject))
+            intent.putExtra(Constants.keytopic,this.intent.getIntExtra(Constants.keytopic,0))
             startActivity(intent)
         }
 
         when (this.intent.getStringExtra(Constants.keysubject)){
-            "alg1" -> caption.text = "Алгебра. Тема 1."
-            "alg2" -> caption.text = "Алгебра. Тема 2."
-            "geom1" -> caption.text = "Геометрия. Тема 1."
-            "geom2" -> caption.text = "Геометрия. Тема 2."
+            "alg" -> caption.text = "Алгебра. " + numToAlgTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
+            "geom" -> caption.text = "Геометрия. " + numToGeomTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
         }
     }
 }

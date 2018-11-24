@@ -15,5 +15,10 @@ class Menu : AppCompatActivity() {
             val intent = Intent(this,Subject::class.java)
             startActivity(intent)
         }
+
+        status.setOnClickListener {
+            val intent = Intent(this,Status::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -17,6 +17,7 @@ class Textbook : AppCompatActivity() {
         back.setOnClickListener {
             val intent = Intent(this,InSubject::class.java)
             intent.putExtra(Constants.keysubject,this.intent.getStringExtra(Constants.keysubject))
+            intent.putExtra(Constants.keytopic,this.intent.getIntExtra(Constants.keytopic,0))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
@@ -25,25 +26,18 @@ class Textbook : AppCompatActivity() {
             val intent = Intent(this,Tasks::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.putExtra(Constants.keysubject,this.intent.getStringExtra(Constants.keysubject))
+            intent.putExtra(Constants.keytopic,this.intent.getIntExtra(Constants.keytopic,0))
             startActivity(intent)
         }
 
         when (this.intent.getStringExtra(Constants.keysubject)){
-            "alg1" ->{
-                text.text = "алгебра 1"
-                caption.text = "Алгебра. Тема 1."
+            "alg" ->{
+                caption.text = "Алгебра. " + numToAlgTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
+                //load text file
             }
-            "alg2" ->{
-                text.text = "алгебра 2"
-                caption.text = "Алгебра. Тема 2."
-            }
-            "geom1" ->{
-                text.text = "геометрия 1"
-                caption.text = "Геометрия. Тема 1."
-            }
-            "geom2" ->{
-                text.text = "геометрия 2"
-                caption.text = "Геометрия. Тема 2."
+            "geom" ->{
+                caption.text = "Геометрия. " + numToGeomTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
+                //load text file
             }
         }
     }
