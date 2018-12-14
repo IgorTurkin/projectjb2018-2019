@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        for (i : Int in 0..Constants.kolAlgTopics-1)
+            StatusCode.completeAlg[i] = 0
+
+        for (i : Int in 0..Constants.kolGeomTopics-1)
+            StatusCode.completeGeom[i] = 0
+
         // Example of a call to a native method
 //        sample_text.text = stringFromJNI()
 

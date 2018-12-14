@@ -25,12 +25,13 @@ class Status : AppCompatActivity() {
             var rlparams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
             rlparams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             rlparams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-//            button.layoutParams = rlparams
+            button.layoutParams = rlparams
             var exercise = ButtonExercise(this, button)
             exercise.button!!.text = "12345"
-//            exercise.layoutParams = rlparams
-            rlayoutstatus.addView(exercise)
             exercise.layoutParams = rlparams
+            rlayoutstatus.addView(exercise)
+            rlayoutstatus.addView(button)
+//            exercise.layoutParams = rlparams
         }
 
 
