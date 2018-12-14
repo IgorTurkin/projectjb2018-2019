@@ -3,8 +3,12 @@ package com.example.titovtima.mathgame
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.example.titovtima.mathgame.Exercises.ButtonExercise
+import com.example.titovtima.mathgame.Exercises.TextAnswerExercise
 import kotlinx.android.synthetic.main.activity_tasks.*
 
 class Tasks : AppCompatActivity() {
@@ -36,10 +40,27 @@ class Tasks : AppCompatActivity() {
                 caption.text = "Алгебра. " + numToAlgTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
                 when (this.intent.getIntExtra(Constants.keytopic,0)){
                     1 ->{
+//                        val text1 = TextView(this)
+//                        text1.text = "Сколько будет 717÷3?"
+//                        text1.textSize = 30f
+//                        llayouttasks.addView(text1)
+//                        val llayoutans1 = LinearLayout(this)
+//                        llayoutans1.orientation = LinearLayout.HORIZONTAL
+//                        val ans1_1 = Button(this)
+//                        ans1_1.text = "478"
+//                        ans1_1.setOnClickListener {  }
 
+//                        val ex1 = ButtonExercise()
+//                        val button = Button(this)
+//                        button.text = "new text"
+//                        ex1.button = button
+//                        llayouttasks.addView(ex1)
                     }
                     2 ->{
-
+                        var exercise = TextAnswerExercise(this, "")
+                        exercise.question.text = "Capital of Russia"
+                        exercise.ans.hint = "Saint Petersburg"
+                        llayouttasks.addView(exercise)
                     }
                 }
             }
