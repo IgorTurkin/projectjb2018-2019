@@ -17,11 +17,11 @@ class Subject : AppCompatActivity() {
 //        Toast.makeText(this,id,Toast.LENGTH_LONG).show()
         if ((id >= alg1.id)&&(id <= alg2.id)) {
             intent.putExtra(Constants.keysubject, "alg")
-            intent.putExtra(Constants.keytopic,id - alg1.id +1)
+            intent.putExtra(Constants.keytopic,id - alg1.id)
         }
         if ((id >= geom1.id)&&(id <= geom2.id)) {
             intent.putExtra(Constants.keysubject, "geom")
-            intent.putExtra(Constants.keytopic, id - geom1.id + 1)
+            intent.putExtra(Constants.keytopic, id - geom1.id)
         }
         startActivity(intent)
     }

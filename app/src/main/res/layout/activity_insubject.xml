@@ -10,24 +10,43 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/caption"
+              android:layout_marginLeft="40dp"
     />
 
     <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
             android:text="учебник"
             android:id="@+id/textbook"
     />
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="задания"
-            android:id="@+id/tasks"
-            android:layout_alignTop="@id/textbook"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="80dp"
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textAllCaps="false"
+              android:id="@+id/texttasks"
+              android:layout_below="@id/textbook"
+              android:layout_marginLeft="40dp"
+              android:text="Задания"
     />
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/llayoutchoosetasks"
+                  android:layout_below="@id/texttasks"
+    >
+
+    </LinearLayout>
+
+    <!--<Button android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="задания"-->
+            <!--android:id="@+id/tasks"-->
+            <!--android:layout_alignTop="@id/textbook"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="80dp"-->
+    <!--/>-->
 
 </RelativeLayout>
