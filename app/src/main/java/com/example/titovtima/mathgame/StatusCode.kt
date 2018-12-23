@@ -16,6 +16,7 @@ fun numToGeomTopic(n : Int) =
 
 object StatusCode{
     var xp = 0
-    val completeAlg : Array<Int> = Array(Constants.kolAlgTopics,{0})
-    val completeGeom = Array(Constants.kolGeomTopics,{0})
+    val completeAlg : Array<Array<Boolean>> = Array(Constants.kolAlgTopics, { i -> Array(Constants.kolAlgTasks[i], {false})})
+    val completeGeom : Array<Array<Boolean>> = Array(Constants.kolGeomTopics, { i -> Array(Constants.kolGeomTasks[i], {false})})
+//    val completeGeom = Array(Constants.kolGeomTopics,{0})
 }

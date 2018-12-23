@@ -19,7 +19,7 @@ class Tasks : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
 
-        Toast.makeText(this,this.intent.getStringExtra(Constants.keysubject), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,this.intent.getStringExtra(Constants.keysubject), Toast.LENGTH_SHORT).show()
 
         back.setOnClickListener {
             val intent = Intent(this,InSubject::class.java)
@@ -37,29 +37,66 @@ class Tasks : AppCompatActivity() {
             startActivity(intent)
         }
 
-        when (this.intent.getStringExtra(Constants.keysubject)){
+        val subject = this.intent.getStringExtra(Constants.keysubject)
+        val topic = this.intent.getIntExtra(Constants.keytopic,0)
+        val task = this.intent.getIntExtra(Constants.keytask, 0)
+
+        when (subject){
             "alg" ->{
                 caption.text = "Алгебра. " + numToAlgTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
-                when (this.intent.getIntExtra(Constants.keytopic,0)){
-                    1 ->{
-//                        val text1 = TextView(this)
-//                        text1.text = "Сколько будет 717÷3?"
-//                        text1.textSize = 30f
-//                        llayouttasks.addView(text1)
-//                        val llayoutans1 = LinearLayout(this)
-//                        llayoutans1.orientation = LinearLayout.HORIZONTAL
-//                        val ans1_1 = Button(this)
-//                        ans1_1.text = "478"
-//                        ans1_1.setOnClickListener {  }
-
-//                        val ex1 = ButtonExercise()
-//                        val button = Button(this)
-//                        button.text = "new text"
-//                        ex1.button = button
-//                        llayouttasks.addView(ex1)
-                        llayouttasks.addView(loadTask(this, "alg", 1, 1))//StatusCode.completeAlg[1]))
+                when (topic){
+                    0 ->{
+                        when (task){
+                            0 -> {
+                                var exercise = TextAnswerExercise(this, "Capital of Russia", "Saint Petersburg")
+//                                exercise.question.text = "Capital of Russia"
+                                exercise.ans.hint = "Saint Petersburg"
+//                            layout.addView(exercise)
+                                exercise.button.setOnClickListener {
+                                    if (exercise.ans.text.toString() == exercise.rightans){
+                                        StatusCode.completeAlg[0][0] = true
+                                        Toast.makeText(this, "Правильно!", Toast.LENGTH_SHORT).show()
+                                        if (task < Constants.kolAlgTasks[topic] - 1) {
+                                            val intent = Intent(this, Tasks::class.java)
+                                            intent.putExtra(Constants.keysubject, subject)
+                                            intent.putExtra(Constants.keytopic, topic)
+                                            intent.putExtra(Constants.keytask, task + 1)
+                                            startActivity(intent)
+                                        }
+                                    }else{
+                                        exercise.ans.text.clear()
+                                        Toast.makeText(this, "Неправильно!", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                                llayouttasks.addView(exercise)
+                            }
+                            1 -> {
+                                var exercise = TextAnswerExercise(this, "2+2", "4")
+//                                exercise.question.text = "Capital of Russia"
+                                exercise.ans.hint = "5"
+//                            layout.addView(exercise)
+                                exercise.button.setOnClickListener {
+                                    if (exercise.ans.text.toString() == exercise.rightans){
+                                        StatusCode.completeAlg[0][1] = true
+                                        Toast.makeText(this, "Правильно!", Toast.LENGTH_SHORT).show()
+                                        if (task < Constants.kolAlgTasks[topic] - 1) {
+                                            val intent = Intent(this, Tasks::class.java)
+                                            intent.putExtra(Constants.keysubject, subject)
+                                            intent.putExtra(Constants.keytopic, topic)
+                                            intent.putExtra(Constants.keytask, task + 1)
+                                            startActivity(intent)
+                                        }
+                                    }else{
+                                        exercise.ans.text.clear()
+                                        Toast.makeText(this, "Неправильно!", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                                llayouttasks.addView(exercise)
+                            }
+                        }
+//                        llayouttasks.addView(loadTask(this, "alg", 1, 1))//StatusCode.completeAlg[1]))
                     }
-                    2 ->{
+                    1 ->{
                         llayouttasks.addView(loadTask(this, "alg", 2, 1))//StatusCode.completeAlg[1]))
                     }
                 }
@@ -67,10 +104,10 @@ class Tasks : AppCompatActivity() {
             "geom" ->{
                 caption.text = "Геометрия. " + numToGeomTopic(this.intent.getIntExtra(Constants.keytopic,0)) + "."
                 when (this.intent.getIntExtra(Constants.keytopic,0)){
-                    1 ->{
+                    0 ->{
 
                     }
-                    2 ->{
+                    1 ->{
 
                     }
                 }
@@ -88,10 +125,19 @@ fun loadTask (context: Context, subject: String, topic: Int, task: Int) : Exerci
                 1 ->{
                     when (task){
                         1 ->{
-                            exercise = TextAnswerExercise(context, "")
+                            exercise = TextAnswerExercise(context, "", "")
                             exercise.question.text = "Capital of Russia"
                             exercise.ans.hint = "Saint Petersburg"
 //                            layout.addView(exercise)
+                            exercise.button.setOnClickListener {
+                                if ((exercise as TextAnswerExercise).ans.text.toString() == (exercise as TextAnswerExercise).rightans){
+                                    (exercise as TextAnswerExercise).completed = true
+
+                                }else{
+                                    (exercise as TextAnswerExercise).ans.text.clear()
+                                    Toast.makeText(context, "Неправильно!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                         2 ->{
 
@@ -101,7 +147,7 @@ fun loadTask (context: Context, subject: String, topic: Int, task: Int) : Exerci
                 2 ->{
                     when (task){
                         1 ->{
-                            exercise = TextAnswerExercise(context, "")
+                            exercise = TextAnswerExercise(context, "", "")
                             exercise.question.text = "Capital of USA"
                             exercise.ans.hint = "Moscow"
 //                            layout.addView(exercise)

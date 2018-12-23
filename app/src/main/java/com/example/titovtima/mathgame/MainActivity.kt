@@ -16,11 +16,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        Constants.kolAlgTopics = 2
+        Constants.kolGeomTopics = 2
+        Constants.kolAlgTasks[0] = 3
+        Constants.kolAlgTasks[1] = 7
+
         for (i : Int in 0..Constants.kolAlgTopics-1)
-            StatusCode.completeAlg[i] = 0
+            for (j in 0..Constants.kolAlgTasks[i]-1)
+                StatusCode.completeAlg[i][j] = false
 
         for (i : Int in 0..Constants.kolGeomTopics-1)
-            StatusCode.completeGeom[i] = 0
+            for (j in 0..Constants.kolGeomTasks[i]-1)
+                StatusCode.completeGeom[i][j] = false
 
         // Example of a call to a native method
 //        sample_text.text = stringFromJNI()
